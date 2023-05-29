@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Voodoo.Tiny;
 //SaveIsBuy save pilot buy status 
 //CurrentPilot save pilot last pilot refference
 //MoneyAmount save money amount after buy or add
@@ -23,6 +24,7 @@ public class SaveManager : MonoBehaviour
     {
         ScoreManager score = FindObjectOfType<ScoreManager>();
         PlayerPrefs.SetFloat("Score", score.Score);
+        TinySauce.OnGameFinished(score.Score);
         PlayerPrefs.Save();
     }
     public void SaveMoneyAmount()

@@ -3,8 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
+using Voodoo.Tiny;
 public class GameManager : MonoBehaviour
-{
+{ public static GameManager _instance;
+    public static GameManager Instance{
+        get
+        {
+            if (_instance == null)
+                Debug.LogError("GameMnager is null");
+            return _instance;
+        }
+}
+    private void Awake()
+    {
+        _instance = this;
+    }
+    private void Start()
+    {
+        TinySauce.OnGameStarted();
+    }
     private GameObject MainPlayer;
     private BuildingGenerator BuildingGenerator;
     public VariableJoystick Joystick;
